@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8"/>
-	<meta name="viewport" content="minimum-scale=1, width=device-width, maximum-scale=1, user-scalable=no, minimal-ui"/>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="minimum-scale=1, width=device-width, maximum-scale=1, user-scalable=no, minimal-ui" />
 	<link href="styles/style.css" rel="stylesheet" />
 	<title>frontend-ajax-table</title>
 </head>
+
 <body>
 	<main>
-		
+		<h2>1. Список всех пользователей</h2>
+		<table class="all-users"></table>
+		<h2>2. Список активных пользователей</h2>
+		<table class="active-users"></table>
+		<h2>3. Список всех пользователей, отсортированных по возрасту</h2>
+		<table class="sort-by-age"></table>
+		<h2>4. Список всех пользователей, отсортированных по имени</h2>
+		<table class="sort-by-name"></table>
+		<h2>5. Пользователи с фамилией не короче 6 символов</h2>
+		<table class="long-surname-sort"></table>
 	</main>
 	<!--(if target dev)><!-->
 	<script src="../node_modules/systemjs/dist/system.src.js"></script>
 	<script src="../system.config.js"></script>
 	<script src="index.js"></script>
 	<!--<!(endif)-->
-
+	
 	<!--(if target build)>
 	<script src="build.js"></script>
 	<!(endif)-->
 </body>
+
 </html>
