@@ -1,12 +1,10 @@
 'use strict';
 
-var $ = require('jquery');
 var utils = require('./utils.js');
 var people = require('./people.js');
 var tableElems = require('./TableElements.js');
 var fillTable = require('./fillTable.js');
 var tableRows;
-var parsedData;
 
 people.getAll(function (usersData) {
     tableRows = tableElems.tableHeaders;

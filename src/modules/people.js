@@ -14,7 +14,7 @@ module.exports = {
                     peopleData = usersData;
                     callback(usersData);
                 }
-            })
+            });
         }
     }
 };
