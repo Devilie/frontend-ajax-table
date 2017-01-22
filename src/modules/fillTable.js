@@ -33,7 +33,7 @@ module.exports = {
     },
     longSurname: function (usersData) {
         tableRows = tableElems.tableHeaders;
-        tableRows += usersData.filter(utils.lastnameLength).map(tableElems.tableRows);
+        tableRows += usersData.filter(utils.longSurname).map(tableElems.tableRows);
         longSurnameTable.append(tableRows);
     }
 };

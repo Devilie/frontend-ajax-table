@@ -24,7 +24,7 @@ module.exports = {
             return true;
         }
     },
-    lastnameLength: function (person) {
+    longSurname: function (person) {
         var surname = person.name.last;
         if (surname.length >= 6) {
             return true;
