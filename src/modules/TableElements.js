@@ -1,9 +1,8 @@
 'use strict';
 
 module.exports = {
-    tableHeaders: function (elem) {
-        elem.append(
-            `<tr>
+    tableHeaders: function () {
+        return `<tr>
                 <th>Фото</th>
                 <th>Полное имя</th>
                 <th>Активный</th>
@@ -15,12 +14,10 @@ module.exports = {
                 <th>Емейл</th>
                 <th>Номер телефона</th>
                 <th>Адрес</th>
-            </tr>`
-        );
+            </tr>`;
     },
-    tableBodyElems: function (elem, user) {
-        elem.append(
-            `<tr>
+    tableRows: function (user) {
+        return `<tr>
                 <td><img src="${user.picture}" alt=""></td>
                 <td>${user.name.first} ${user.name.last}</td>
                 <td>${user.isActive}</td>
@@ -32,8 +29,7 @@ module.exports = {
                 <td><a href="mailto:${user.email}">${user.email}</a></td>
                 <td><a href="tel:${user.phone}"> ${user.phone}</a></td>
                 <td>${user.address}</td>
-            </tr>`
-        );
+            </tr>`;
     }
 
-}; 
+};
