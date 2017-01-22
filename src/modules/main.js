@@ -1,38 +1,14 @@
 'use strict';
 
-var utils = require('./utils.js');
 var people = require('./people.js');
-var tableElems = require('./TableElements.js');
 var fillTable = require('./fillTable.js');
-var tableRows;
 
-people.getAll(function (usersData) {
-    tableRows = tableElems.tableHeaders;
-    tableRows += usersData.map(tableElems.tableRows);
-    fillTable.allUsers(tableRows);
-});
+people.getAllWithPromise().then(fillTable.allUsers);
 
-people.getAll(function (usersData) {
-    tableRows = tableElems.tableHeaders;
-    tableRows += usersData.filter(utils.isActive).map(tableElems.tableRows);
-    fillTable.activeUsers(tableRows);
-});
+people.getAll(fillTable.activeUsers);
 
-people.getAll(function (usersData) {
-    tableRows = tableElems.tableHeaders;
-    usersData = usersData.sort(utils.sortAge);
-    tableRows += usersData.map(tableElems.tableRows);
-    fillTable.sortedByAge(tableRows);
-});
+people.getAll(fillTable.sortedByAge);
 
-people.getAll(function (usersData) {
-    tableRows = tableElems.tableHeaders;
-    tableRows += usersData.sort(utils.sortName).map(tableElems.tableRows);
-    fillTable.sortedByName(tableRows);
-});
+people.getAll(fillTable.sortedByName);
 
-people.getAll(function (usersData) {
-    tableRows = tableElems.tableHeaders;
-    tableRows += usersData.filter(utils.lastnameLength).map(tableElems.tableRows);
-    fillTable.longSurname(tableRows);
-});
+people.getAll(fillTable.longSurname);

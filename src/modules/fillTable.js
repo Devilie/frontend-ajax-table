@@ -1,25 +1,39 @@
 'use strict';
 var $ = require('jquery');
+var utils = require('./utils.js');
+var tableElems = require('./TableElements.js');
+var tableRows;
+var allUsersTable = $('.all-users');
+var activeUsersTable = $('.active-users');
+var sortedByAgeTable = $('.sort-by-age');
+var sortedByNameTable = $('.sort-by-name');
+var longSurnameTable = $('.long-surname-sort');
 
 module.exports = {
-    allUsers: function (usersDataRows) {
-        var allUsersTable = $('.all-users');
-        allUsersTable.append(usersDataRows);
+    allUsers: function (usersData) {
+        tableRows = tableElems.tableHeaders;
+        tableRows += usersData.map(tableElems.tableRows);
+        allUsersTable.append(tableRows);
     },
-    activeUsers: function (usersDataRows) {
-        var activeUsersTable = $('.active-users');
-        activeUsersTable.append(usersDataRows);
+    activeUsers: function (usersData) {
+        tableRows = tableElems.tableHeaders;
+        tableRows += usersData.filter(utils.isActive).map(tableElems.tableRows);
+        activeUsersTable.append(tableRows);
     },
-    sortedByAge: function (usersDataRows) {
-        var sortedByAgeTable = $('.sort-by-age');
-        sortedByAgeTable.append(usersDataRows);
+    sortedByAge: function (usersData) {
+        tableRows = tableElems.tableHeaders;
+        usersData = usersData.sort(utils.sortAge);
+        tableRows += usersData.map(tableElems.tableRows);
+        sortedByAgeTable.append(tableRows);
     },
-    sortedByName: function (usersDataRows) {
-        var sortedByNameTable = $('.sort-by-name');
-        sortedByNameTable.append(usersDataRows);
+    sortedByName: function (usersData) {
+        tableRows = tableElems.tableHeaders;
+        tableRows += usersData.sort(utils.sortName).map(tableElems.tableRows);
+        sortedByNameTable.append(tableRows);
     },
-    longSurname: function (usersDataRows) {
-        var longSurnameTable = $('.long-surname-sort');
-        longSurnameTable.append(usersDataRows);
+    longSurname: function (usersData) {
+        tableRows = tableElems.tableHeaders;
+        tableRows += usersData.filter(utils.lastnameLength).map(tableElems.tableRows);
+        longSurnameTable.append(tableRows);
     }
 };
