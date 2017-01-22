@@ -1,4 +1,5 @@
 'use strict';
+var $ = require('jquery');
 
 module.exports = {
     allUsers: function (usersDataRows) {
@@ -11,7 +12,7 @@ module.exports = {
     },
     sortedByAge: function (usersDataRows) {
         var sortedByAgeTable = $('.sort-by-age');
-        sortedByNameTable.append(usersDataRows);
+        sortedByAgeTable.append(usersDataRows);
     },
     sortedByName: function (usersDataRows) {
         var sortedByNameTable = $('.sort-by-name');

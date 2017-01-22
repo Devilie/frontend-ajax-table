@@ -1,5 +1,6 @@
 'use strict';
 
+var $ = require('jquery');
 var peopleData;
 
 module.exports = {
