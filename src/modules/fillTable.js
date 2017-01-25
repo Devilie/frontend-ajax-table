@@ -8,7 +8,7 @@ var longSurnameTable = $('.long-surname-sort');
 
 module.exports = {
     allUsers: function (usersDataRows) {
-        allUsersTable.append(tableRows);
+        allUsersTable.append(usersDataRows);
     },
     activeUsers: function (usersDataRows) {
         activeUsersTable.append(usersDataRows);

@@ -1,7 +1,6 @@
 'use strict';
 
 var $ = require('jquery');
-var peopleData;
 
 module.exports = {
     getAll: function () {
@@ -11,10 +10,9 @@ module.exports = {
                 success: function (response) {
                     resolve(response);
                 },
-                error: reject(function () {
-                    return new Error("AJAX request failed!");
-                })
-
+                error: function () {
+                    reject();
+                }
             });
         });
     }

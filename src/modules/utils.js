@@ -1,11 +1,5 @@
 'use strict';
 var userDataChanged;
-module.exports = {
-    isActive: isActiveUser,
-    sortAge: sortByAge,
-    sortName: sortByName,
-    overSixCharSurname: filterLastNameLongerThanSix
-};
 
 function isActiveUser(userData) {
     userDataChanged = userData.filter(function (user) {
@@ -17,7 +11,7 @@ function isActiveUser(userData) {
         }
     });
     return userDataChanged;
-};
+}
 
 function sortByAge(userData) {
     userDataChanged = userData.sort(function (user1, user2) {
@@ -28,7 +22,7 @@ function sortByAge(userData) {
         }
     });
     return userDataChanged;
-};
+}
 
 function sortByName(userData) {
     userDataChanged = userData.sort(function (user1, user2) {
@@ -42,9 +36,9 @@ function sortByName(userData) {
     });
     console.log(userDataChanged);
     return userDataChanged;
-};
+}
 
-function filterLastNameLongerThanSix(person) {
+function filterLastNameLongerThanSix(userData) {
     userDataChanged = userData.filter(function (user) {
         var surname = user.name.last;
         if (surname.length >= 6) {
@@ -54,4 +48,11 @@ function filterLastNameLongerThanSix(person) {
         }
     });
     return userDataChanged;
+}
+
+module.exports = {
+    isActive: isActiveUser,
+    sortAge: sortByAge,
+    sortName: sortByName,
+    overSixCharSurname: filterLastNameLongerThanSix
 };

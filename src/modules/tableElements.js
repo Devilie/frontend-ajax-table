@@ -1,12 +1,5 @@
 'use strict';
 var tableRows;
-module.exports = tableRowsGenerator;
-
-function tableRowsGenerator(usersData) {
-    tableRows = tableHeaders();
-    tableRows += usersData.map(tableRow);
-    return tableRows;
-};
 
 function tableHeaders() {
     return `<tr>
@@ -22,7 +15,7 @@ function tableHeaders() {
                 <th>Номер телефона</th>
                 <th>Адрес</th>
             </tr>`;
-};
+}
 
 function tableRow(user) {
     return `<tr>
@@ -39,3 +32,11 @@ function tableRow(user) {
                 <td>${user.address}</td>
             </tr>`;
 }
+
+function tableRowsGenerator(usersData) {
+    tableRows = tableHeaders();
+    tableRows += usersData.map(tableRow);
+    return tableRows;
+}
+
+module.exports = tableRowsGenerator;
