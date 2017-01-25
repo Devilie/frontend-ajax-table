@@ -1,8 +1,5 @@
 'use strict';
 var $ = require('jquery');
-var utils = require('./utils.js');
-var tableElems = require('./TableElements.js');
-var tableRows;
 var allUsersTable = $('.all-users');
 var activeUsersTable = $('.active-users');
 var sortedByAgeTable = $('.sort-by-age');
@@ -10,30 +7,19 @@ var sortedByNameTable = $('.sort-by-name');
 var longSurnameTable = $('.long-surname-sort');
 
 module.exports = {
-    allUsers: function (usersData) {
-        tableRows = tableElems.tableHeaders;
-        tableRows += usersData.map(tableElems.tableRows);
+    allUsers: function (usersDataRows) {
         allUsersTable.append(tableRows);
     },
-    activeUsers: function (usersData) {
-        tableRows = tableElems.tableHeaders;
-        tableRows += usersData.filter(utils.isActive).map(tableElems.tableRows);
-        activeUsersTable.append(tableRows);
+    activeUsers: function (usersDataRows) {
+        activeUsersTable.append(usersDataRows);
     },
-    sortedByAge: function (usersData) {
-        tableRows = tableElems.tableHeaders;
-        usersData = usersData.sort(utils.sortAge);
-        tableRows += usersData.map(tableElems.tableRows);
-        sortedByAgeTable.append(tableRows);
+    sortedByAge: function (usersDataRows) {
+        sortedByAgeTable.append(usersDataRows);
     },
-    sortedByName: function (usersData) {
-        tableRows = tableElems.tableHeaders;
-        tableRows += usersData.sort(utils.sortName).map(tableElems.tableRows);
-        sortedByNameTable.append(tableRows);
+    sortedByName: function (usersDataRows) {
+        sortedByNameTable.append(usersDataRows);
     },
-    longSurname: function (usersData) {
-        tableRows = tableElems.tableHeaders;
-        tableRows += usersData.filter(utils.overSixCharSurname).map(tableElems.tableRows);
-        longSurnameTable.append(tableRows);
+    longSurname: function (usersDataRows) {
+        longSurnameTable.append(usersDataRows);
     }
 };

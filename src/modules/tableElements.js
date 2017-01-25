@@ -1,8 +1,15 @@
 'use strict';
+var tableRows;
+module.exports = tableRowsGenerator;
 
-module.exports = {
-    tableHeaders: function () {
-        return `<tr>
+function tableRowsGenerator(usersData) {
+    tableRows = tableHeaders();
+    tableRows += usersData.map(tableRow);
+    return tableRows;
+};
+
+function tableHeaders() {
+    return `<tr>
                 <th>Фото</th>
                 <th>Полное имя</th>
                 <th>Активный</th>
@@ -15,9 +22,10 @@ module.exports = {
                 <th>Номер телефона</th>
                 <th>Адрес</th>
             </tr>`;
-    },
-    tableRows: function (user) {
-        return `<tr>
+};
+
+function tableRow(user) {
+    return `<tr>
                 <td><img src="${user.picture}" alt=""></td>
                 <td>${user.name.first} ${user.name.last}</td>
                 <td>${user.isActive}</td>
@@ -30,6 +38,4 @@ module.exports = {
                 <td><a href="tel:${user.phone}"> ${user.phone}</a></td>
                 <td>${user.address}</td>
             </tr>`;
-    }
-
-};
+}

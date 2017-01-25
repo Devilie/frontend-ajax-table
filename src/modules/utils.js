@@ -1,5 +1,5 @@
 'use strict';
-
+var userDataChanged;
 module.exports = {
     isActive: isActiveUser,
     sortAge: sortByAge,
@@ -7,37 +7,51 @@ module.exports = {
     overSixCharSurname: filterLastNameLongerThanSix
 };
 
-function isActiveUser(person) {
-    if (person.isActive) {
-        return true;
-    } else {
-        return false;
-    }
+function isActiveUser(userData) {
+    userDataChanged = userData.filter(function (user) {
+        if (user.isActive) {
+            console.log(user.age);
+            return true;
+        } else {
+            return false;
+        }
+    });
+    return userDataChanged;
 };
 
-function sortByAge(person1, person2) {
-    if (person1.age > person2.age) {
-        return true;
-    } else {
-        return false;
-    }
+function sortByAge(userData) {
+    userDataChanged = userData.sort(function (user1, user2) {
+        if (user1.age > user2.age) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+    return userDataChanged;
 };
 
-function sortByName(person1, person2) {
-    var name1 = person1.name.first + person1.name.last;
-    var name2 = person2.name.first + person2.name.last;
-    if (name1 < name2) {
-        return false;
-    } else {
-        return true;
-    }
+function sortByName(userData) {
+    userDataChanged = userData.sort(function (user1, user2) {
+        var name1 = user1.name.first + user1.name.last;
+        var name2 = user2.name.first + user2.name.last;
+        if (name1 < name2) {
+            return false;
+        } else {
+            return true;
+        }
+    });
+    console.log(userDataChanged);
+    return userDataChanged;
 };
 
 function filterLastNameLongerThanSix(person) {
-    var surname = person.name.last;
-    if (surname.length >= 6) {
-        return true;
-    } else {
-        return false;
-    }
+    userDataChanged = userData.filter(function (user) {
+        var surname = user.name.last;
+        if (surname.length >= 6) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+    return userDataChanged;
 };
