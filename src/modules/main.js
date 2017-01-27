@@ -25,7 +25,7 @@ people.getAll()
     .then(appendTo(activeUsersTable));
 
 people.getAll()
-    .then(utils.sortAge)
+    .then(orderByAge.ascendingOrder)
     .then(tableElements)
     .then(appendTo(sortedByAgeTable));
 
