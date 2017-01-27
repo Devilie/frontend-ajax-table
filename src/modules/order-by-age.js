@@ -7,7 +7,6 @@ module.exports = {
     descAgeSort: descSort
 };
 
-
 function ascOrder(userData) {
     var userDataChanged = userData.concat();
     userDataChanged = userDataChanged.sort(ascSort);
@@ -19,7 +18,6 @@ function descOrder(userData) {
     userDataChanged = userDataChanged.sort(descSort);
     return userDataChanged;
 }
-
 
 function ascSort(user1, user2) {
     if (user1.age > user2.age) {

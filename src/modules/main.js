@@ -11,30 +11,30 @@ var filterActiveUsers = require('./filter-active-users.js');
 var orderByAge = require('./order-by-age.js');
 var orderByName = require('./order-by-name.js');
 var filterLongerLastname = require('./filter-longer-lastname.js');
-var tableElements = require('./tableElements.js');
+var generateTableRows = require('./generate-table-rows.js');
 var appendTo = require('./append-to.js');
 
 
 people.getAll()
-    .then(tableElements)
+    .then(generateTableRows)
     .then(appendTo(allUsersTable));
 
 people.getAll()
     .then(filterActiveUsers.filterActive)
-    .then(tableElements)
+    .then(generateTableRows)
     .then(appendTo(activeUsersTable));
 
 people.getAll()
     .then(orderByAge.ascendingOrder)
-    .then(tableElements)
+    .then(generateTableRows)
     .then(appendTo(sortedByAgeTable));
 
 people.getAll()
     .then(orderByName.ascendingOrder)
-    .then(tableElements)
+    .then(generateTableRows)
     .then(appendTo(sortedByNameTable));
 
 people.getAll()
     .then(filterLongerLastname.longerThanSix)
-    .then(tableElements)
+    .then(generateTableRows)
     .then(appendTo(longSurnameTable));

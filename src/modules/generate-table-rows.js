@@ -1,5 +1,4 @@
 'use strict';
-var tableRows;
 
 function tableHeaders() {
     return `<tr>
@@ -34,7 +33,7 @@ function tableRow(user) {
 }
 
 function tableRowsGenerator(usersData) {
-    tableRows = tableHeaders();
+    var tableRows = tableHeaders();
     tableRows += usersData.map(tableRow);
     return tableRows;
 }
