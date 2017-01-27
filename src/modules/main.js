@@ -1,30 +1,40 @@
 'use strict';
 
+var $ = require('jquery');
+var allUsersTable = $('.all-users');
+var activeUsersTable = $('.active-users');
+var sortedByAgeTable = $('.sort-by-age');
+var sortedByNameTable = $('.sort-by-name');
+var longSurnameTable = $('.long-surname-sort');
 var people = require('./people.js');
-var utils = require('./utils.js');
+var filterActiveUsers = require('./filter-active-users.js');
+var orderByAge = require('./order-by-age.js');
+var orderByName = require('./order-by-name.js');
+var filterLongerLastname = require('./filter-longer-lastname.js');
 var tableElements = require('./tableElements.js');
-var fillTable = require('./fillTable.js');
+var appendTo = require('./append-to.js');
+
 
 people.getAll()
     .then(tableElements)
-    .then(fillTable.allUsers);
+    .then(appendTo(allUsersTable));
 
 people.getAll()
-    .then(utils.isActive)
+    .then(filterActiveUsers.filterActive)
     .then(tableElements)
-    .then(fillTable.activeUsers);
+    .then(appendTo(activeUsersTable));
 
 people.getAll()
     .then(utils.sortAge)
     .then(tableElements)
-    .then(fillTable.sortedByAge);
+    .then(appendTo(sortedByAgeTable));
 
 people.getAll()
-    .then(utils.sortName)
+    .then(orderByName.ascendingOrder)
     .then(tableElements)
-    .then(fillTable.sortedByName);
+    .then(appendTo(sortedByNameTable));
 
 people.getAll()
-    .then(utils.overSixCharSurname)
+    .then(filterLongerLastname.longerThanSix)
     .then(tableElements)
-    .then(fillTable.longSurname);
+    .then(appendTo(longSurnameTable));

@@ -34,7 +34,6 @@ function sortByName(userData) {
             return true;
         }
     });
-    console.log(userDataChanged);
     return userDataChanged;
 }
 
