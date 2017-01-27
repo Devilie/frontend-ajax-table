@@ -22,19 +22,13 @@ function descOrder(userData) {
 function ascSort(user1, user2) {
     var name1 = user1.name.first + user1.name.last;
     var name2 = user2.name.first + user2.name.last;
-    if (name1 < name2) {
-        return -1;
-    } else {
-        return 1;
-    }
+    var res = name1.localeCompare(name2);
+    return res;
 }
 
 function descSort(user1, user2) {
     var name1 = user1.name.first + user1.name.last;
     var name2 = user2.name.first + user2.name.last;
-    if (name1 < name2) {
-        return 1;
-    } else {
-        return -1;
-    }
+    var res = name2.localeCompare(name1);
+    return res;
 }
